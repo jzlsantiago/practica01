@@ -1,0 +1,25 @@
+
+<table class="table table-striped" ng-controller="mainCtrl">
+  <thead>
+    <tr>
+      <td><a href="" ng-click="addTodo()">+ Agregar una tarea</a><a href="" ng-click="helloConsole()">+ Agregar una Consola</a></td>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr ng-repeat="todo in todos | orderBy: 'completed' " ng-init="todo.completed = false" >
+      <td>
+        <input type="checkbox" ng-model="todo.completed">
+        <label ng-click="editing = true" ng-hide="editing" ng-class="{'edited': todo.edited , 'completed': todo.completed}"> {{ todo.name }}</label>
+        <input ng-change="todo.edited = true" ng-blur="editing = false" ng-show="editing" type="text" ng-model="todo.name">
+      </td>
+      <td class="text-right align-middle">
+      <!--  <a href=""  ng-click="saveTodo(todo)">Grabar</a> -->
+        <a href=""  ng-click="saveTodos()">Grabar</a>
+        <a href="" ng-click="editing = !editing">Modificar</a>
+        <a href=""  ng-click="deleteTodo(todo, $index)">Eliminar</a>
+      </td>
+    </tr>
+
+  </tbody>
+</table>

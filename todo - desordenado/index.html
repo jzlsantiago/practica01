@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body ng-app="todoApp">
+  <div class="container">
+    <h1>To Do</h1>
+
+    <!--
+    <div ng-controller="mainCtrl" >
+    <a href="" ng-click="helloworld()">Hola</a>
+
+    <div ng-controller="secondCtrl" >
+    <a href="" ng-click="whoami()">Hola</a>
+    <a href="" ng-click="helloworld()">Hola</a>
+  </div>
+  <hello-world></hello-world>
+  <div data-hello-world></div>
+  </div>
+-->
+
+<table class="table table-striped" ng-controller="mainCtrl">
+  <thead>
+    <tr>
+      <td><a href="" ng-click="addTodo()">+ Agregar una tarea</a><a href="" ng-click="helloConsole()">+ Agregar una Consola</a></td>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr ng-repeat="todo in todos">
+      <td>
+        <input type="checkbox" ng-model="todo.completed">
+        <label ng-hide="editing" ng-class="{'edited': todo.edited }"> {{ todo.name }}</label>
+        <input ng-change="todo.edited = true" ng-blur="editing = false" ng-show="editing" type="text" ng-model="todo.name">
+      </td>
+      <td class="text-right align-middle">
+        <a href=""  ng-click="saveTodo(todo)">Grabar</a>
+        <a href="" ng-click="editing = !editing">Modificar</a>
+        <a href=""  ng-click="deleteTodo(todo, $index)">Eliminar</a>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
